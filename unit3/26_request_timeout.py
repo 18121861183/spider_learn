@@ -18,4 +18,4 @@ r = requests.get('https://www.taobao.com', timeout=1)
 print(r.status_code)
 
 # 连接超时，读取超时
-r = requests.get('https://www.taobao.com', timeout=(5, 11, 30))
+r = requests.get('https://www.taobao.com', timeout=(5.11, 30))
