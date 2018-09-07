@@ -2,16 +2,16 @@
 # coding:utf-8
 
 """
-@author: zyc
-@contact: yaochen.zhao@colasoft.com.cn
+@author: Lieb
+@contact: xx@xx.com
 @software: PyCharm
-@file: 16_pyquery_init.py
-@time: 2018/9/7 17:30
+@file: 17_pyquery_css.py
+@time: 2018/9/7 20:45
 """
 from pyquery import PyQuery as pq
 html = '''
-<div>
-    <ul>
+<div id="container">
+    <ul class="list">
          <li class="item-0">first item</li>
          <li class="item-1"><a href="link2.html">second item</a></li>
          <li class="item-0 active"><a href="link3.html"><span class="bold">third item</span></a></li>
@@ -21,12 +21,21 @@ html = '''
  </div>
 '''
 doc = pq(html)
-# 获取li标签
-print(doc('li'))
+print(doc('#container .list li'))
 
-# 从网页直接获取数据进行解析
-doc = pq(url='https://cuiqingcai.com')
-print(doc('title'))
+doc = pq(html)
+items = doc('.list')
+print(type(items))
+print(items)
+# 将符合条件的所有子孙节点选择出来
+lis = items.find('li')
+print(type(lis))
+print(lis)
+# 查询子节点
+lis = items.children()
+print(lis)
+# 查询带active的子节点
+lis = items.children('.active')
+print(lis)
 
-doc = pq(filename='test.html')
-print(doc('li'))
+

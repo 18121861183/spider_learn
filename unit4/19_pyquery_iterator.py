@@ -2,16 +2,17 @@
 # coding:utf-8
 
 """
-@author: zyc
-@contact: yaochen.zhao@colasoft.com.cn
+@author: Lieb
+@contact: xx@xx.com
 @software: PyCharm
-@file: 16_pyquery_init.py
-@time: 2018/9/7 17:30
+@file: 19_pyquery_iterator.py
+@time: 2018/9/7 21:23
 """
 from pyquery import PyQuery as pq
 html = '''
-<div>
-    <ul>
+<div class="wrap">
+<div class="container">
+    <ul class="list">
          <li class="item-0">first item</li>
          <li class="item-1"><a href="link2.html">second item</a></li>
          <li class="item-0 active"><a href="link3.html"><span class="bold">third item</span></a></li>
@@ -19,14 +20,13 @@ html = '''
          <li class="item-0"><a href="link5.html">fifth item</a></li>
      </ul>
  </div>
+ </div>
 '''
 doc = pq(html)
-# 获取li标签
-print(doc('li'))
-
-# 从网页直接获取数据进行解析
-doc = pq(url='https://cuiqingcai.com')
-print(doc('title'))
-
-doc = pq(filename='test.html')
-print(doc('li'))
+li = doc('.item-0.active')
+print(li)
+print(str(li).strip())
+lis = doc('li').items()
+print(type(lis))
+for li in lis:
+    print(li, type(li))
